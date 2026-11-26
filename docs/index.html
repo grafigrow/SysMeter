@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SysMeter — Free Windows 10 &amp; 11 Taskbar CPU, RAM &amp; Disk Monitor</title>
+  <meta name="description" content="Lightweight (~55 KB), zero-dependency real-time CPU, RAM &amp; Disk monitor for the Windows 10 &amp; 11 taskbar. Free, open-source, no ads, no bloat." />
+  <meta property="og:title" content="SysMeter — Windows 10 &amp; 11 Taskbar CPU, RAM &amp; Disk Monitor" />
+  <meta property="og:description" content="Stop opening Task Manager 10x/day. Monitor CPU %, RAM % and Disk % right on your Windows taskbar in ~55 KB." />
+  <meta property="og:image" content="https://grafigrow.github.io/SysMeter/social-banner.png" />
+  <meta property="og:url" content="https://grafigrow.github.io/SysMeter/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --surface: #141720;
+      --surface-2: #1c202c;
+      --border: #2a2f3d;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --cyan: #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1020px; margin: 0 auto; padding: 24px 20px 64px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0 36px; border-bottom: 1px solid var(--border);
+    }
+    .brand { font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+    .nav-links { display: flex; gap: 20px; font-size: 0.95rem; }
+    .hero { text-align: center; padding: 54px 0 36px; }
+    .pill {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.35);
+      color: var(--green); font-size: 0.85rem; font-weight: 600; margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.15; margin-bottom: 16px; }
+    .hero p { max-width: 670px; margin: 0 auto 30px; color: var(--muted); font-size: 1.12rem; }
+    .cta-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px; border-radius: 10px; font-weight: 700; font-size: 1rem;
+      transition: transform 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #0ea5e9); color: #06120c;
+      box-shadow: 0 10px 28px rgba(34, 197, 94, 0.22);
+    }
+    .btn-secondary { background: var(--surface-2); color: #fff; border: 1px solid var(--border); }
+    .sub-meta { color: var(--muted); font-size: 0.88rem; }
+    .demo-wrap {
+      margin: 42px auto 0; max-width: 760px; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 14px; padding: 20px; text-align: left;
+    }
+    .demo-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px; font-size: 0.88rem; color: var(--muted);
+    }
+    .layout-toggle {
+      background: var(--surface-2); color: var(--text); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-weight: 600;
+    }
+    .taskbar-sim {
+      background: #14151a; border: 1px solid #2b2d38; border-radius: 10px;
+      height: 54px; padding: 0 16px; display: flex; align-items: center; justify-content: flex-end; gap: 14px;
+    }
+    .widget-sim {
+      background: rgb(24, 24, 28); border: 1px solid rgb(58, 58, 70);
+      border-radius: 6px; padding: 4px 10px; font-weight: 700; font-size: 12px;
+      display: grid; grid-template-columns: auto auto; gap: 2px 12px; line-height: 1.25;
+    }
+    .widget-sim.horiz { display: flex; gap: 14px; align-items: center; height: 28px; }
+    .lbl { color: #a8acb8; margin-right: 4px; }
+    .green { color: var(--green); }
+    .amber { color: var(--amber); }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px; margin-top: 56px;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px;
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.93rem; }
+    footer {
+      margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      color: var(--muted); font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="brand">⚡ SysMeter <span style="font-size:0.8rem;color:var(--muted);font-weight:500;">by GrafiGrow</span></div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="https://grafigrow.github.io/NetSpeedMeter/">NetSpeedMeter</a>
+        <a href="https://github.com/grafigrow/SysMeter" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/grafigrow/SysMeter/releases" target="_blank" rel="noopener">Releases</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="pill">Windows 10 &amp; Windows 11 • Free &amp; Open Source (MIT)</div>
+      <h1>CPU, RAM &amp; Disk — Right on Your Windows Taskbar.</h1>
+      <p>
+        Stop opening Task Manager 10 times a day just to see why your PC feels slow. SysMeter sits cleanly on your taskbar in ~55 KB—zero bloat, zero ads, zero admin rights.
+      </p>
+
+      <div class="cta-group">
+        <a id="btn-setup" class="btn btn-primary" href="https://github.com/grafigrow/SysMeter/releases/latest/download/SysMeter-v1.0.0-Setup.exe">
+          ⬇ Download Windows Installer (.exe)
+        </a>
+        <a id="btn-portable" class="btn btn-secondary" href="https://github.com/grafigrow/SysMeter/releases/latest/download/SysMeter-v1.0.0-Portable-win.zip">
+          📦 Portable ZIP (No Install)
+        </a>
+      </div>
+      <div class="sub-meta">
+        <span id="version-label">v1.0.0</span> • <span id="download-stat">Open Source MIT</span> • Works on Windows 10 &amp; 11 • No admin rights required
+      </div>
+
+      <div class="demo-wrap">
+        <div class="demo-header">
+          <span>Interactive Taskbar Preview (Live Simulation)</span>
+          <button id="toggle-layout" class="layout-toggle">Switch to Single-Line Horizontal</button>
+        </div>
+        <div class="taskbar-sim">
+          <div id="widget-sim" class="widget-sim">
+            <div><span class="lbl">CPU</span><span id="sim-cpu" class="green">34%</span></div>
+            <div><span class="lbl">RAM</span><span id="sim-ram" class="amber">67%</span></div>
+            <div><span class="lbl">DSK</span><span id="sim-dsk" class="green">12%</span></div>
+            <div id="sim-mem" style="color:#a8acb8;font-weight:500;">10.7/16G</div>
+          </div>
+          <div style="color:#9ca3af;font-size:12px;">🔊 🌐 <span id="sim-clock">12:00 PM</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="grid">
+      <div class="card">
+        <h3>⚡ ~55 KB &amp; Zero Bloat</h3>
+        <p>Built in native C# (.NET Framework 4.x pre-installed on Windows). Uses ~5 MB RAM—no Electron, no background updater.</p>
+      </div>
+      <div class="card">
+        <h3>🎨 Color-Coded Thresholds</h3>
+        <p>Instant visual status: Green (0–50%), Amber (51–80%), and Red (81–100%) so bottlenecks jump out immediately.</p>
+      </div>
+      <div class="card">
+        <h3>🖥️ Per-Monitor High-DPI</h3>
+        <p>Crisp text on 100%, 125%, 150%, and 200% laptop displays. Snaps next to the system tray and survives Win+D.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Daily Peak History &amp; CSV</h3>
+        <p>Double-click the widget anytime to inspect daily Peak/Average CPU, RAM &amp; Disk usage and export CSV reports.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 <a href="https://grafigrow.vercel.app">GrafiGrow</a> • MIT License</div>
+      <div>Companion Tool: <a href="https://grafigrow.github.io/NetSpeedMeter/">NetSpeedMeter (Internet Speed)</a></div>
+    </footer>
+  </div>
+
+  <script>
+    const widget = document.getElementById('widget-sim');
+    const toggleBtn = document.getElementById('toggle-layout');
+    const cpuEl = document.getElementById('sim-cpu');
+    const ramEl = document.getElementById('sim-ram');
+    const dskEl = document.getElementById('sim-dsk');
+    const memEl = document.getElementById('sim-mem');
+    const clockEl = document.getElementById('sim-clock');
+
+    let horiz = false;
+    toggleBtn.addEventListener('click', () => {
+      horiz = !horiz;
+      widget.classList.toggle('horiz', horiz);
+      memEl.style.display = horiz ? 'none' : 'block';
+      toggleBtn.textContent = horiz ? 'Switch to Two-Line Stacked' : 'Switch to Single-Line Horizontal';
+    });
+
+    function tickSim() {
+      const cpu = Math.floor(12 + Math.random() * 48);
+      const ram = Math.floor(52 + Math.random() * 22);
+      const dsk = Math.floor(2 + Math.random() * 25);
+      cpuEl.textContent = cpu + '%';
+      cpuEl.className = cpu >= 50 ? 'amber' : 'green';
+      ramEl.textContent = ram + '%';
+      ramEl.className = ram >= 50 ? 'amber' : 'green';
+      dskEl.textContent = dsk + '%';
+      clockEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+    tickSim();
+    setInterval(tickSim, 1000);
+
+    fetch('https://api.github.com/repos/grafigrow/SysMeter/releases/latest')
+      .then(r => r.ok ? r.json() : null)
+      .then(rel => {
+        if (!rel || !rel.assets) return;
+        document.getElementById('version-label').textContent = rel.tag_name;
+        const totalDl = rel.assets.reduce((sum, a) => sum + (a.download_count || 0), 0);
+        if (totalDl > 0) {
+          document.getElementById('download-stat').textContent = `🚀 ${totalDl} downloads`;
+        }
+        const setup = rel.assets.find(a => /Setup\.exe$/i.test(a.name));
+        const portable = rel.assets.find(a => /Portable.*\.zip$/i.test(a.name));
+        if (setup) document.getElementById('btn-setup').href = setup.browser_download_url;
+        if (portable) document.getElementById('btn-portable').href = portable.browser_download_url;
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

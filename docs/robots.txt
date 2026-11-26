@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://grafigrow.github.io/SysMeter/sitemap.xml

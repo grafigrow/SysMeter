@@ -1,0 +1,9 @@
+dist/
+*.exe
+*.zip
+*.tmp
+*.user
+*.suo
+.vs/
+bin/
+obj/
