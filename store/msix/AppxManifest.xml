@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AppxManifest.xml template — SysMeter by GrafiGrow (Store ID 9PD4523802RH) -->
+<!-- Values filled in from Partner Center, verified 2026-11-26 22:40. Version must end in .0. -->
+<!-- Place at the root of the staging folder next to SysMeter.exe and the Assets\ folder, -->
+<!-- then pack with: makeappx pack /d <staging> /p SysMeterByGrafiGrow.msix -->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap uap5 rescap">
+  <Identity
+    Name="Grafigrow.SysMeterbyGrafiGrow"
+    Publisher="CN=E50B39C4-8452-4092-B79E-38E3241AF382"
+    Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>SysMeter by GrafiGrow</DisplayName>
+    <PublisherDisplayName>Grafigrow</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Applications>
+    <Application Id="SysMeter" Executable="SysMeter.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="SysMeter by GrafiGrow"
+        Description="Live CPU, RAM and disk usage on your Windows taskbar."
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile
+          Wide310x150Logo="Assets\Wide310x150Logo.png"
+          Square310x310Logo="Assets\Square310x310Logo.png"
+          Square71x71Logo="Assets\Square71x71Logo.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+      <Extensions>
+        <!-- Replaces the app's registry Run-key auto-start, which is virtualised under MSIX. -->
+        <uap5:Extension Category="windows.startupTask" Executable="SysMeter.exe" EntryPoint="Windows.FullTrustApplication">
+          <uap5:StartupTask TaskId="SysMeterStartup" Enabled="true" DisplayName="SysMeter" />
+        </uap5:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
