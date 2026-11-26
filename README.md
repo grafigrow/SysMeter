@@ -8,7 +8,8 @@
 [![.NET Framework 4.x](https://img.shields.io/badge/.NET%20Framework-4.x%20Built--in-512BD4?style=flat-square)](https://github.com/grafigrow/SysMeter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-34D399?style=flat-square)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/grafigrow/SysMeter?style=flat-square&color=22c55e)](https://github.com/grafigrow/SysMeter/releases)
-[![Downloads](https://img.shields.io/github/downloads/grafigrow/SysMeter/total?style=flat-square&color=22c55e&logo=github)](https://github.com/grafigrow/SysMeter/releases)
+[![Gumroad](https://img.shields.io/badge/Gumroad-Download%20%26%20Support-FF90E8?style=flat-square&logo=gumroad&logoColor=black)](https://fizzy45.gumroad.com/l/tlxqxk)
+[![itch.io](https://img.shields.io/badge/itch.io-Get%20on%20itch.io-FA5C5C?style=flat-square&logo=itchdotio&logoColor=white)](https://grafigrow.itch.io/sysmeter-windows-10-11-taskbar-cpu-ram-disk-monitor)
 
 > **Zero bloat. Zero dependencies. ~55 KB binary.**  
 > Stop opening Task Manager ten times a day just to check why your PC is slow. SysMeter sits quietly on your Windows 10/11 taskbar showing live **CPU %**, **RAM % (with GB used)**, and **Disk %**, with color-coded thresholds, daily peak history, and CSV export.
@@ -34,8 +35,10 @@
 
 | Option | Best For | Link |
 | :--- | :--- | :--- |
-| **Windows Installer (`.exe`)** | Most users (Desktop shortcut, Start with Windows, clean uninstaller) | [Download Latest Setup.exe](https://github.com/grafigrow/SysMeter/releases/latest) |
-| **Portable ZIP (`.zip`)** | USB drives / no installation | [Download Portable ZIP](https://github.com/grafigrow/SysMeter/releases/latest) |
+| **Gumroad Store** | Fast download & Support developer ($0+ Pay What You Want) | [Get on Gumroad](https://fizzy45.gumroad.com/l/tlxqxk) |
+| **itch.io Store** | Indie tools catalog & Community ($0+ or Donate) | [Get on itch.io](https://grafigrow.itch.io/sysmeter-windows-10-11-taskbar-cpu-ram-disk-monitor) |
+| **Windows Installer (`.exe`)** | Most users (Desktop shortcut, Start with Windows, clean uninstaller) | [Download Setup.exe](https://github.com/grafigrow/SysMeter/releases/latest) |
+| **Portable ZIP (`.zip`)** | USB drives / standalone zero install | [Download Portable ZIP](https://github.com/grafigrow/SysMeter/releases/latest) |
 
 ---
 
